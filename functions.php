@@ -49,3 +49,5 @@ $customeHeaderDefaults = array(
     'default-image' => get_template_directory_uri() . '/assets/images/lemur.jpg'
 );
 add_theme_support('custom-header', $customeHeaderDefaults);
+
+add_theme_support('wp-block-styles');
