@@ -1,34 +1,4 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-<head>
-    <meta charset="utf-8">
-    <title></title>
-    <?php wp_head(); ?>
-</head>
-<body>
-    <?php if (has_nav_menu('top_navigation')): ?>
-        <nav class="navbar navbar-expand-md navbar-light bg-light" role="navigation">
-            <div class="container">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <a class="navbar-brand" href="#">Navbar</a>
-                <?php
-                wp_nav_menu( array(
-                    'theme_location'  => 'top_navigation',
-                    'depth'           => 2, // 1 = no dropdowns, 2 = with dropdowns.
-                    'container'       => 'div',
-                    'container_class' => 'collapse navbar-collapse',
-                    'container_id'    => 'top_navigation',
-                    'menu_class'      => 'navbar-nav mr-auto ',
-                    'fallback_cb'     => 'WP_Bootstrap_Navwalker::fallback',
-                    'walker'          => new WP_Bootstrap_Navwalker(),
-                ) );
-                ?>
-            </div>
-        </nav>
-    <?php endif; ?>
+<?php get_header(); ?>
 
 
 
@@ -40,16 +10,16 @@
                         <?php wp_nav_menu( array(
                             'theme_location' => 'side_navigation',
                             )); ?>
-                    </div>                    
+                    </div>
                 </div>
                 <div class="col">
                     <?php if (have_posts()): ?>
                         <?php while (have_posts()): the_post(); ?>
-                            <div class="card mt-3">
+                            <div class="card mt-2">
                                 <h5 class="card-header"><?php the_title(); ?></h5>
                                 <div class="card-body">
                                     <div>
-                                        <?php if (!is_single()): ?>
+                                        <?php if (!is_singular()): ?>
                                             <?php if (has_post_thumbnail()): ?>
                                                 <div class="row">
                                                     <div class="col-12 col-md-4">
@@ -82,7 +52,7 @@
                                 <h5 class="card-header"><?php the_title(); ?></h5>
                                 <div class="card-body">
                                     <div>
-                                        <?php if (!is_single()): ?>
+                                        <?php if (!is_singular()): ?>
                                             <?php if (has_post_thumbnail()): ?>
                                                 <div class="row">
                                                     <div class="col-12 col-md-4">
@@ -119,30 +89,4 @@
         <?php endif; ?>
 
     </div>
-    <?php if (has_nav_menu('bottom_navigation')): ?>
-        <nav class="navbar navbar-expand-md navbar-light bg-light fixed-bottom" role="navigation">
-            <div class="container">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <a class="navbar-brand" href="#">Navbar</a>
-                <?php
-                wp_nav_menu( array(
-                    'theme_location'  => 'bottom_navigation',
-                    'depth'           => 2, // 1 = no dropdowns, 2 = with dropdowns.
-                    'container'       => 'div',
-                    'container_class' => 'collapse navbar-collapse',
-                    'container_id'    => 'bottom_navigation',
-                    'menu_class'      => 'navbar-nav mr-auto ',
-                    'fallback_cb'     => 'WP_Bootstrap_Navwalker::fallback',
-                    'walker'          => new WP_Bootstrap_Navwalker(),
-                ) );
-                ?>
-            </div>
-        </nav>
-    <?php endif; ?>
-
-    <?php wp_footer(); ?>
-</body>
-</html>
+    <?php get_footer(); ?>

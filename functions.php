@@ -32,3 +32,20 @@ function register_navwalker(){
 }
 
 add_action( 'after_setup_theme', 'register_navwalker' );
+
+
+
+register_default_headers( array(
+    'defaultImage' => array(
+        'url'           => get_template_directory_uri() . '/assets/images/lemur.jpg',
+        'thumbnail_url' => get_template_directory_uri() . '/assets/images/lemur.jpg',
+        'description'   => __( 'The default image for the custom header.', '1902Custom' )
+    )
+) );
+
+$customeHeaderDefaults = array(
+    'width' => 1280,
+    'height' => 720,
+    'default-image' => get_template_directory_uri() . '/assets/images/lemur.jpg'
+);
+add_theme_support('custom-header', $customeHeaderDefaults);
