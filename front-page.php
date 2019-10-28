@@ -32,10 +32,23 @@
                         <?php endif; ?>
 
                         <div class="card-body">
+                            <!-- <p><?php echo get_post_format(); ?></p> -->
                             <div>
                                 <?php if (!is_singular()): ?>
                                     <?php the_excerpt(); ?>
-                                    <a href="<?php the_permalink(); ?>" class="btn btn-primary">Read more</a>
+                                    <?php if (has_post_format('video')): ?>
+                                        <a href="<?php the_permalink(); ?>" class="btn btn-warning">Watch Video</a>
+                                    <?php elseif (has_post_format('audio')): ?>
+                                        <a href="<?php the_permalink(); ?>" class="btn btn-success">Listen Here</a>
+                                    <?php elseif (has_post_format('image')): ?>
+                                        <a href="<?php the_permalink(); ?>" class="btn btn-info">View Image</a>
+                                    <?php elseif (has_post_format('gallery')): ?>
+                                        <a href="<?php the_permalink(); ?>" class="btn btn-danger">View Gallery</a>
+                                    <?php else: ?>
+                                        <a href="<?php the_permalink(); ?>" class="btn btn-primary">Read more</a>
+
+                                    <?php endif; ?>
+
                                 <?php else: ?>
                                     <?php the_post_thumbnail('full', ['class' => 'img-fluid']); ?>
                                     <div>

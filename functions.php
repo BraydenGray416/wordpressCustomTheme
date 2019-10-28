@@ -51,3 +51,5 @@ $customeHeaderDefaults = array(
 add_theme_support('custom-header', $customeHeaderDefaults);
 
 add_theme_support('wp-block-styles');
+
+add_theme_support('post-formats', array('video', 'audio', 'image', 'gallery'));
