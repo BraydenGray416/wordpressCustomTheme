@@ -7,7 +7,7 @@
             // echo "</pre>";
                 // echo "Block number" .$i. ' is a ' . $allBlocks[$i]['blockName'];
                 // echo '<br>';
-                if ($allBlocks[$i]['blockName'] == 'core-embed/youtube') {
+                if ($allBlocks[$i]['blockName'] == 'core-embed/youtube' || $allBlocks[$i]['blockName'] == 'core/video' || $allBlocks[$i]['blockName'] == 'core-embed/vimeo') {
                     // echo "this is a video block";
                     $firstVideoBlock = $allBlocks[$i];
                     break;
