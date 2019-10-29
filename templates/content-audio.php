@@ -3,7 +3,6 @@
         $allBlocks = parse_blocks(get_the_content());
         for ($i=0; $i < count($allBlocks); $i++) {
                 if ($allBlocks[$i]['blockName'] == 'core-embed/soundcloud' || $allBlocks[$i]['blockName'] == 'core-embed/spotify' || $allBlocks[$i]['blockName'] == 'core/audio') {
-                    echo 'yeet';
                     $firstAudioBlock = $allBlocks[$i];
                     break;
                 }
