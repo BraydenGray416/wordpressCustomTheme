@@ -1,6 +1,7 @@
 <?php get_header(); ?>
 
 
+
 <?php if (has_header_image()): ?>
     <div class="container-fluid p-0">
         <!-- <img src="<?php echo(get_header_image()); ?>" alt="" class="img-fluid"> -->
@@ -19,6 +20,7 @@
 <?php endif; ?>
 
 
+
 <?php if (have_posts()): ?>
     <div class="container py-5">
         <div class="row justify-content-center">
@@ -31,6 +33,37 @@
 
             <?php endwhile; ?>
         </div>
+        <?php
+        $count_posts = wp_count_posts();
+        $published_posts = $count_posts->publish;
+
+        $default_posts_per_page = get_option('posts_per_page')
+        ?>
+        <?php if ($published_posts > $default_posts_per_page): ?>
+            <?php
+                $args = array(
+                    'type' =>  'array'
+                );
+                $paginataionLinks = paginate_links( $args );
+
+            ?>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <?php foreach ($paginataionLinks as $link): ?>
+                        <li class="page-item">
+                            <?php echo str_replace('page-numbers', 'page-link', $link); ?>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            </nav>
+            <nav aria-label="Page navigation example">
+                    <div class="pagination row">
+                        <?php previous_posts_link( '« Previous' ); ?>
+                        <?php next_posts_link( 'Next »'); ?>
+                    </div>
+            </nav>
+
+        <?php endif; ?>
     </div>
 <?php endif; ?>
 

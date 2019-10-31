@@ -11,7 +11,7 @@ Template Post: page, post
     <form action="<?php echo home_url(); ?>" method="get">
         <div class="form-group">
             <label for="">Search For Posts</label>
-            <input type="hidden" name="post_type" value="post,page">
+            <input type="hidden" name="post_type" value="post,movie">
             <input name="s" type="text" class="form-control" aria-describedby="searchPosts" placeholder="Search Posts" value="<?php the_search_query(); ?>">
         </div>
         <div class="form-group">

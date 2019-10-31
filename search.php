@@ -31,6 +31,12 @@
                     </div>
                 <?php endwhile; ?>
             </div>
+            <nav aria-label="Page navigation example">
+                    <div class="pagination row">
+                        <?php previous_posts_link( '« Previous' ); ?>
+                        <?php next_posts_link( 'Next »'); ?>
+                    </div>
+            </nav>
         </div>
     <?php else: ?>
         <div class="alert alert-danger" role="alert">

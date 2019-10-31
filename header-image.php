@@ -10,7 +10,7 @@
      <div class="container-fluid p-0">
          <!-- <img src="<?php echo(get_header_image()); ?>" alt="" class="img-fluid"> -->
          <div class="headerImage" style="background-image:url(<?php echo(get_header_image()); ?>)">
-             <h1 class="display-3"><?php echo get_bloginfo('name'); ?></h1>
+             <h1 class="display-3 headerImageText"><?php echo get_bloginfo('name'); ?></h1>
          </div>
      </div>
  <?php else: ?>

@@ -1,5 +1,5 @@
 <?php if (has_nav_menu('bottom_navigation')): ?>
-    <nav class="navbar navbar-expand-md navbar-light bg-light mt-5" role="navigation">
+    <nav class="navbar navbar-expand-md navbar-light footer mt-5" role="navigation">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
@@ -18,6 +18,7 @@
                 'walker'          => new WP_Bootstrap_Navwalker(),
             ) );
             ?>
+            <?php echo get_theme_mod('1902_footerText'); ?>
         </div>
     </nav>
 <?php endif; ?>
