@@ -44,129 +44,172 @@ function mytheme_customize_register( $wp_customize ) {
         'transport' => 'refresh',
     ) );
 
+    $wp_customize->add_control( new WP_Customize_Control ($wp_customize, '1902_footerTextControl', array(
+        'label'          => __( 'Enter in text for the footer', '1902Custom' ),
+        'section'        => 'footerTextArea',
+        'settings'       => '1902_footerText',
+        'type'           => 'text'
+
+    )
+    )
+);
+
+
+$wp_customize->add_setting( '1902_headerImageTextColour' , array(
+    'default'   => '#d8aff0',
+    'transport' => 'refresh',
+) );
+
+$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, '1902_headerImageTextColourControl', array(
+    'label'      => __( 'Header Image Text Colour', '1902Custom' ),
+    'description' => 'Change the header image text colour',
+    'section'    => 'colors',
+    'settings'   => '1902_headerImageTextColour',
+) ) );
+
+
+$wp_customize->add_setting( '1902_cardTitleBackgroundColor' , array(
+    'default'   => '#40edb6',
+    'transport' => 'refresh',
+) );
+
+$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, '1902_cardTitleBackgroundColorControl', array(
+    'label'      => __( 'Header Image Text Colour', '1902Custom' ),
+    'description' => 'Change the header of the cards background colour',
+    'section'    => 'colors',
+    'settings'   => '1902_cardTitleBackgroundColor',
+) ) );
+
+
+$wp_customize->add_setting( '1902_bottomImage' , array(
+    'default' => '',
+    'transport' => 'refresh',
+) );
+
+$wp_customize->add_section( '1902_bottomImageSection' , array(
+    'title'      => __('Bottom Image','1902Custom'),
+    'priority'   => 31,
+) );
+
+$wp_customize->add_control(
+    new WP_Customize_Image_Control( $wp_customize, '1902_bottomImageControl', array(
+        'label'      => __( 'Upload a bottom image', '1902Custom' ),
+        'section'    => '1902_bottomImageSection',
+        'settings'   => '1902_bottomImage',
+    )
+    )
+);
+
+$wp_customize->add_setting( '1902_bottomImageText' , array(
+    'default'   => '',
+    'transport' => 'refresh',
+) );
+
+$wp_customize->add_control(
+    new WP_Customize_Control( $wp_customize, '1902_footerTextControl', array(
+        'label'          => __( 'Enter in text for under the bottom image', '1902Custom' ),
+        'section'        => '1902_bottomImageSection',
+        'settings'       => '1902_bottomImageText',
+        'type'           => 'text'
+
+    )
+    )
+);
+
+
+$wp_customize->add_setting( '1902_sidebarLocation' , array(
+    'default' => 'left',
+    'transport' => 'refresh',
+) );
+
+$wp_customize->add_section( '1902_sidebarLocationSection' , array(
+    'title'      => __('Sidebar Location','1902Custom'),
+    'priority'   => 32,
+) );
+
+$wp_customize->add_control(
+    new WP_Customize_Control( $wp_customize, '1902_sidebarLocationControl', array(
+        'label'    => __( 'Control Label', '1902Custom' ),
+        'section'  => '1902_sidebarLocationSection',
+        'settings' => '1902_sidebarLocation',
+        'type'     => 'radio',
+        'choices'  => array(
+            'left'  => 'left',
+            'right' => 'right',
+        ),
+    )
+    ) );
+
+
+    $wp_customize->add_setting( '1902_postLayout' , array(
+        'default' => 'grid',
+        'transport' => 'refresh',
+    ) );
+
+    $wp_customize->add_section( '1902_postLayoutSection' , array(
+        'title'      => __('Post Layout','1902Custom'),
+        'priority'   => 32,
+    ) );
+
     $wp_customize->add_control(
-        new WP_Customize_Control(
-            $wp_customize,
-            '1902_footerText',
-            array(
-                'label'          => __( 'Enter in text for the footer', '1902Custom' ),
-                'section'        => 'footerTextArea',
-                'settings'       => '1902_footerText',
-                'type'           => 'text'
-
-            )
-            )
-        );
-
-
-        $wp_customize->add_setting( '1902_headerImageTextColour' , array(
-            'default'   => '#d8aff0',
-            'transport' => 'refresh',
+        new WP_Customize_Control( $wp_customize, '1902_postLayoutControl', array(
+            'label'    => __( 'Control Label', '1902Custom' ),
+            'section'  => '1902_postLayoutSection',
+            'settings' => '1902_postLayout',
+            'type'     => 'radio',
+            'choices'  => array(
+                'grid'  => 'grid',
+                'rows' => 'rows',
+            ),
+        )
         ) );
 
-        $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, '1902_headerImageTextColour', array(
-            'label'      => __( 'Header Image Text Colour', '1902Custom' ),
-            'description' => 'Change the header image text colour',
-            'section'    => 'colors',
-            'settings'   => '1902_headerImageTextColour',
-        ) ) );
 
-
-        $wp_customize->add_setting( '1902_cardTitleBackgroundColor' , array(
-            'default'   => '#40edb6',
-            'transport' => 'refresh',
-        ) );
-
-        $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, '1902_cardTitleBackgroundColor', array(
-            'label'      => __( 'Header Image Text Colour', '1902Custom' ),
-            'description' => 'Change the header of the cards background colour',
-            'section'    => 'colors',
-            'settings'   => '1902_cardTitleBackgroundColor',
-        ) ) );
-
-
-        $wp_customize->add_setting( '1902_bottomImage' , array(
+        $wp_customize->add_setting( '1902_carouselOne' , array(
             'default' => '',
             'transport' => 'refresh',
         ) );
 
-        $wp_customize->add_section( '1902_bottomImageSection' , array(
-            'title'      => __('Bottom Image','1902Custom'),
+        $wp_customize->add_section( '1902_carouselSection' , array(
+            'title'      => __('Carousel Images','1902Custom'),
             'priority'   => 31,
         ) );
 
         $wp_customize->add_control(
-            new WP_Customize_Image_Control( $wp_customize, '1902_bottomImage', array(
-                'label'      => __( 'Upload a bottom image', '1902Custom' ),
-                'section'    => '1902_bottomImageSection',
-                'settings'   => '1902_bottomImage',
+            new WP_Customize_Image_Control( $wp_customize, '1902_carouselOneControl', array(
+                'label'      => __( 'Upload a carousel image', '1902Custom' ),
+                'section'    => '1902_carouselSection',
+                'settings'   => '1902_carouselOne',
             )
             )
         );
 
-        $wp_customize->add_setting( '1902_bottomImageText' , array(
-            'default'   => '',
+        $wp_customize->add_setting( '1902_carouselTwo' , array(
+            'default' => '',
             'transport' => 'refresh',
         ) );
 
         $wp_customize->add_control(
-            new WP_Customize_Control( $wp_customize, '1902_footerText', array(
-                    'label'          => __( 'Enter in text for under the bottom image', '1902Custom' ),
-                    'section'        => '1902_bottomImageSection',
-                    'settings'       => '1902_bottomImageText',
-                    'type'           => 'text'
-
-                )
-                )
-            );
-
-
-        $wp_customize->add_setting( '1902_sidebarLocation' , array(
-            'default' => 'left',
-            'transport' => 'refresh',
-        ) );
-
-        $wp_customize->add_section( '1902_sidebarLocationSection' , array(
-            'title'      => __('Sidebar Location','1902Custom'),
-            'priority'   => 32,
-        ) );
-
-        $wp_customize->add_control(
-            new WP_Customize_Control( $wp_customize, '1902_sidebarLocation', array(
-                'label'    => __( 'Control Label', '1902Custom' ),
-                'section'  => '1902_sidebarLocationSection',
-                'settings' => '1902_sidebarLocation',
-                'type'     => 'radio',
-                'choices'  => array(
-                    'left'  => 'left',
-                    'right' => 'right',
-                ),
+            new WP_Customize_Image_Control( $wp_customize, '1902_carouselTwoControl', array(
+                'label'      => __( 'Upload a carousel image', '1902Custom' ),
+                'section'    => '1902_carouselSection',
+                'settings'   => '1902_carouselTwo',
             )
-        ) );
-
-
-        $wp_customize->add_setting( '1902_postLayout' , array(
-            'default' => 'grid',
+            )
+        );
+        $wp_customize->add_setting( '1902_carouselThree' , array(
+            'default' => '',
             'transport' => 'refresh',
         ) );
 
-        $wp_customize->add_section( '1902_postLayoutSection' , array(
-            'title'      => __('Post Layout','1902Custom'),
-            'priority'   => 32,
-        ) );
-
         $wp_customize->add_control(
-            new WP_Customize_Control( $wp_customize, '1902_postLayout', array(
-                'label'    => __( 'Control Label', '1902Custom' ),
-                'section'  => '1902_postLayoutSection',
-                'settings' => '1902_postLayout',
-                'type'     => 'radio',
-                'choices'  => array(
-                    'Grid'  => 'grid',
-                    'Rows' => 'rows',
-                ),
+            new WP_Customize_Image_Control( $wp_customize, '1902_carouselThreeControl', array(
+                'label'      => __( 'Upload a carousel image', '1902Custom' ),
+                'section'    => '1902_carouselSection',
+                'settings'   => '1902_carouselThree',
             )
-        ) );
+            )
+        );
 
 
     }

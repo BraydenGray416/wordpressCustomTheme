@@ -8,10 +8,12 @@
                     <div class="card h-100 mb-2 mt-2 p-2">
                         <?php wp_nav_menu( array(
                             'theme_location' => 'side_navigation',
+                            'menu_class' => 'list-group list-group-flush',
+                            'container' => '',
+                            'menu_id' => 'sideNav'
                         )); ?>
                     </div>
                 </div>
-                <div class="row">
                     <div class="col">
                         <?php if (have_posts()): ?>
                             <?php while (have_posts()): the_post(); ?>
@@ -45,7 +47,7 @@
                                 </div>
                             <?php endwhile; ?>
                         </div>
-                    </div>
+
                 <?php endif; ?>
             </div>
 

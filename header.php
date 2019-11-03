@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title></title>
     <?php wp_head(); ?>
+    <link rel="stylesheet" href="/assets\css\style.css">
 </head>
 <body>
     <?php if (has_nav_menu('top_navigation')): ?>

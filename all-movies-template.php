@@ -36,6 +36,9 @@ Template Post Type: page
                 <div class="col-12 col-sm-3">
                     <div class="card p-3">
                         <h4><?php the_title(); ?></h4>
+                        <div class="card-body">
+                            <?php the_content(); ?>
+                        </div>
                     </div>
                 </div>
             <?php endwhile; ?>
