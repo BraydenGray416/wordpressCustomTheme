@@ -20,6 +20,7 @@ function mytheme_customize_register( $wp_customize ) {
         'settings'   => '1902_backgroundColour',
     ) ) );
 
+
     $wp_customize->add_setting( '1902_headerFooterColour' , array(
         'default'   => '#17b4ee',
         'transport' => 'refresh',
@@ -32,13 +33,14 @@ function mytheme_customize_register( $wp_customize ) {
         'settings'   => '1902_headerFooterColour',
     ) ) );
 
+
     $wp_customize->add_section( 'footerTextArea' , array(
         'title'      => __( 'Footer Text', '1902Custom' ),
         'priority'   => 30,
     ) );
 
     $wp_customize->add_setting( '1902_footerText' , array(
-        'default'   => 'hello',
+        'default'   => '',
         'transport' => 'refresh',
     ) );
 
@@ -57,24 +59,139 @@ function mytheme_customize_register( $wp_customize ) {
         );
 
 
+        $wp_customize->add_setting( '1902_headerImageTextColour' , array(
+            'default'   => '#d8aff0',
+            'transport' => 'refresh',
+        ) );
 
-}
-add_action( 'customize_register', 'mytheme_customize_register' );
+        $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, '1902_headerImageTextColour', array(
+            'label'      => __( 'Header Image Text Colour', '1902Custom' ),
+            'description' => 'Change the header image text colour',
+            'section'    => 'colors',
+            'settings'   => '1902_headerImageTextColour',
+        ) ) );
 
-function mytheme_customize_css()
-{
-    ?>
-    <style type="text/css">
-    body {
-        background-color: <?php echo get_theme_mod('1902_backgroundColour', '#28ede0'); ?>;
+
+        $wp_customize->add_setting( '1902_cardTitleBackgroundColor' , array(
+            'default'   => '#40edb6',
+            'transport' => 'refresh',
+        ) );
+
+        $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, '1902_cardTitleBackgroundColor', array(
+            'label'      => __( 'Header Image Text Colour', '1902Custom' ),
+            'description' => 'Change the header of the cards background colour',
+            'section'    => 'colors',
+            'settings'   => '1902_cardTitleBackgroundColor',
+        ) ) );
+
+
+        $wp_customize->add_setting( '1902_bottomImage' , array(
+            'default' => '',
+            'transport' => 'refresh',
+        ) );
+
+        $wp_customize->add_section( '1902_bottomImageSection' , array(
+            'title'      => __('Bottom Image','1902Custom'),
+            'priority'   => 31,
+        ) );
+
+        $wp_customize->add_control(
+            new WP_Customize_Image_Control( $wp_customize, '1902_bottomImage', array(
+                'label'      => __( 'Upload a bottom image', '1902Custom' ),
+                'section'    => '1902_bottomImageSection',
+                'settings'   => '1902_bottomImage',
+            )
+            )
+        );
+
+        $wp_customize->add_setting( '1902_bottomImageText' , array(
+            'default'   => '',
+            'transport' => 'refresh',
+        ) );
+
+        $wp_customize->add_control(
+            new WP_Customize_Control( $wp_customize, '1902_footerText', array(
+                    'label'          => __( 'Enter in text for under the bottom image', '1902Custom' ),
+                    'section'        => '1902_bottomImageSection',
+                    'settings'       => '1902_bottomImageText',
+                    'type'           => 'text'
+
+                )
+                )
+            );
+
+
+        $wp_customize->add_setting( '1902_sidebarLocation' , array(
+            'default' => 'left',
+            'transport' => 'refresh',
+        ) );
+
+        $wp_customize->add_section( '1902_sidebarLocationSection' , array(
+            'title'      => __('Sidebar Location','1902Custom'),
+            'priority'   => 32,
+        ) );
+
+        $wp_customize->add_control(
+            new WP_Customize_Control( $wp_customize, '1902_sidebarLocation', array(
+                'label'    => __( 'Control Label', '1902Custom' ),
+                'section'  => '1902_sidebarLocationSection',
+                'settings' => '1902_sidebarLocation',
+                'type'     => 'radio',
+                'choices'  => array(
+                    'left'  => 'left',
+                    'right' => 'right',
+                ),
+            )
+        ) );
+
+
+        $wp_customize->add_setting( '1902_postLayout' , array(
+            'default' => 'grid',
+            'transport' => 'refresh',
+        ) );
+
+        $wp_customize->add_section( '1902_postLayoutSection' , array(
+            'title'      => __('Post Layout','1902Custom'),
+            'priority'   => 32,
+        ) );
+
+        $wp_customize->add_control(
+            new WP_Customize_Control( $wp_customize, '1902_postLayout', array(
+                'label'    => __( 'Control Label', '1902Custom' ),
+                'section'  => '1902_postLayoutSection',
+                'settings' => '1902_postLayout',
+                'type'     => 'radio',
+                'choices'  => array(
+                    'Grid'  => 'grid',
+                    'Rows' => 'rows',
+                ),
+            )
+        ) );
+
+
     }
-    .header {
-        background-color: <?php echo get_theme_mod('1902_headerFooterColour', '#17b4ee'); ?>;
+    add_action( 'customize_register', 'mytheme_customize_register' );
+
+    function mytheme_customize_css()
+    {
+        ?>
+        <style type="text/css">
+        body {
+            background-color: <?php echo get_theme_mod('1902_backgroundColour', '#28ede0'); ?>;
+        }
+        .header {
+            background-color: <?php echo get_theme_mod('1902_headerFooterColour', '#17b4ee'); ?>;
+        }
+        .footer {
+            background-color: <?php echo get_theme_mod('1902_headerFooterColour', '#17b4ee'); ?>;
+        }
+        .headerImageText{
+            color: <?php echo get_theme_mod('1902_headerImageTextColour', '#d8aff0') ?>;
+        }
+        .cardTitleBackgroundColor{
+            background-color: <?php echo get_theme_mod('1902_cardTitleBackgroundColor', '#40edb6') ?>
+        }
+        </style>
+        <?php
     }
-    .footer {
-        background-color: <?php echo get_theme_mod('1902_headerFooterColour', '#17b4ee'); ?>;
-    }
-    </style>
-    <?php
-}
-add_action( 'wp_head', 'mytheme_customize_css');
+    add_action( 'wp_head', 'mytheme_customize_css');

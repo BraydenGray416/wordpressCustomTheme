@@ -20,7 +20,7 @@
 
 <div class="card h-100 border border-info">
     <div class="card-body">
-        <h5 class="card-header"><?php the_title(); ?></h5>
+        <h5 class="card-header cardTitleBackgroundColor"><?php the_title(); ?></h5>
         <?php if ($firstImageBlock): ?>
             <div class="fullImage">
                 <?php echo apply_filters( 'the_content', render_block($firstImageBlock)) ; ?>

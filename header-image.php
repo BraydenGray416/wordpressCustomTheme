@@ -17,7 +17,7 @@
      <div class="conatiner">
          <div class="row">
              <div class="col text-center">
-                 <h1 class="display-3"><?php echo get_bloginfo('name'); ?></h1>
+                 <h1 class="display-3 headerImageText"><?php echo get_bloginfo('name'); ?></h1>
              </div>
          </div>
      </div>
