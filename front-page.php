@@ -20,6 +20,30 @@
 <?php endif; ?>
 
 <?php if (have_posts()): ?>
+    <div class="container py5">
+        <div class="row justify-content-center">
+            <?php while (have_posts()): the_post(); ?>
+                <div class="col-12 mb-3">
+                    <?php get_template_part('templates/content', get_post_format()); ?>
+                </div>
+
+
+
+            <?php endwhile; ?>
+        </div>
+        <?php
+        $args = array(
+    'posts_per_page' => 50,
+    'cache_results'  => false
+);
+$query = new WP_Query( $args );
+        ?>
+    </div>
+<?php endif; ?>
+
+
+
+<?php if (have_posts()): ?>
     <div class="container py-5">
         <?php if (get_theme_mod('1902_postLayout') == 'grid'): ?>
             <div class="row justify-content-center">
@@ -94,44 +118,30 @@
         <img src="<?php echo get_theme_mod('1902_bottomImage'); ?>" alt=""style="width: 100%;">
         <h5 class="display-3 d-flex justify-content-center"><?php echo get_theme_mod('1902_bottomImageText'); ?></h5>
 
+        <?php
+        for ($i=1; $i <= 3 ; $i++) {
+            if(get_theme_mod('1902_slide_'.$i)){
+                $firstSlide = $i;
+                break;
+            }
+        }
+        ?>
 
-        <div id="" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-                <?php if (get_theme_mod('1902_carouselOne')): ?>
-                    <div class="carousel-item active">
-                        <img src="<?php echo get_theme_mod('1902_carouselOne'); ?>" class="d-block w-100">
+        <?php if(isset($firstSlide)): ?>
+            <div class="container">
+                <div id="homeCarousel" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <?php for ($i=1; $i <= 3 ; $i++): ?>
+                            <?php if(get_theme_mod('1902_slide_'.$i)): ?>
+                                <div class="carousel-item <?php if($firstSlide === $i){ echo 'active';} ?>">
+                                    <img src="<?php echo get_theme_mod('1902_slide_'.$i); ?>" class="d-block w-100" alt="...">
+                                </div>
+                            <?php endif; ?>
+                        <?php endfor; ?>
                     </div>
-                    <?php if (get_theme_mod('1902_carouselTwo')): ?>
-                        <div class="carousel-item">
-                            <img src="<?php echo get_theme_mod('1902_carouselTwo'); ?>" class="d-block w-100">
-                        </div>
-                    <?php endif; ?>
-                    <?php if (get_theme_mod('1902_carouselThree')): ?>
-                        <div class="carousel-item">
-                            <img src="<?php echo get_theme_mod('1902_carouselThree'); ?>" class="d-block w-100">
-                        </div>
-                    <?php endif; ?>
-
-                <?php elseif (!get_theme_mod('1902_carouselOne')): ?>
-                    <?php if (get_theme_mod('1902_carouselTwo')): ?>
-                        <div class="carousel-item active">
-                            <img src="<?php echo get_theme_mod('1902_carouselTwo'); ?>" class="d-block w-100">
-                        </div>
-                        <?php if (get_theme_mod('1902_carouselThree')): ?>
-                            <div class="carousel-item">
-                                <img src="<?php echo get_theme_mod('1902_carouselThree'); ?>" class="d-block w-100">
-                            </div>
-                        <?php endif; ?>
-
-                    <?php elseif (!get_theme_mod('1902_carouselTwo')): ?>
-                        <div class="carousel-item active">
-                            <img src="<?php echo get_theme_mod('1902_carouselThree'); ?>" class="d-block w-100">
-                        </div>
-                    <?php endif; ?>
-                <?php endif; ?>
-
+                </div>
             </div>
-        </div>
+        <?php endif; ?>
     </div>
 
 <?php endif; ?>

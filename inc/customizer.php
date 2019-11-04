@@ -165,51 +165,63 @@ $wp_customize->add_control(
         ) );
 
 
-        $wp_customize->add_setting( '1902_carouselOne' , array(
-            'default' => '',
-            'transport' => 'refresh',
-        ) );
+        $wp_customize->add_section( '1902_slideshowSection' , array(
+       'title'      => __( 'Slideshow', '1902Custom' ),
+       'priority'   => 30,
+   ) );
+   for ($i=1; $i <=3 ; $i++) {
+       $wp_customize->add_setting( '1902_slide_'.$i , array(
+           'default'   => '',
+           'transport' => 'refresh',
+       ) );
+       $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, '1902_slide_'.$i.'Control', array(
+         'label'      => __( 'Add Slide ' . $i, '1902Custom' ),
+         'section'    => '1902_slideshowSection',
+         'settings'   => '1902_slide_'.$i,
+       ) ) );
+   }
 
-        $wp_customize->add_section( '1902_carouselSection' , array(
-            'title'      => __('Carousel Images','1902Custom'),
-            'priority'   => 31,
-        ) );
 
-        $wp_customize->add_control(
-            new WP_Customize_Image_Control( $wp_customize, '1902_carouselOneControl', array(
-                'label'      => __( 'Upload a carousel image', '1902Custom' ),
-                'section'    => '1902_carouselSection',
-                'settings'   => '1902_carouselOne',
-            )
-            )
-        );
+        // $wp_customize->add_setting( '1902_carousel1' , array(
+        //     'default' => '',
+        //     'transport' => 'refresh',
+        // ) );
 
-        $wp_customize->add_setting( '1902_carouselTwo' , array(
-            'default' => '',
-            'transport' => 'refresh',
-        ) );
+        // $wp_customize->add_control(
+        //     new WP_Customize_Image_Control( $wp_customize, '1902_carousel1Control', array(
+        //         'label'      => __( 'Upload a carousel image', '1902Custom' ),
+        //         'section'    => '1902_carouselSection',
+        //         'settings'   => '1902_carousel1',
+        //     )
+        //     )
+        // );
 
-        $wp_customize->add_control(
-            new WP_Customize_Image_Control( $wp_customize, '1902_carouselTwoControl', array(
-                'label'      => __( 'Upload a carousel image', '1902Custom' ),
-                'section'    => '1902_carouselSection',
-                'settings'   => '1902_carouselTwo',
-            )
-            )
-        );
-        $wp_customize->add_setting( '1902_carouselThree' , array(
-            'default' => '',
-            'transport' => 'refresh',
-        ) );
+        // $wp_customize->add_setting( '1902_carousel2' , array(
+        //     'default' => '',
+        //     'transport' => 'refresh',
+        // ) );
 
-        $wp_customize->add_control(
-            new WP_Customize_Image_Control( $wp_customize, '1902_carouselThreeControl', array(
-                'label'      => __( 'Upload a carousel image', '1902Custom' ),
-                'section'    => '1902_carouselSection',
-                'settings'   => '1902_carouselThree',
-            )
-            )
-        );
+        // $wp_customize->add_control(
+        //     new WP_Customize_Image_Control( $wp_customize, '1902_carousel2Control', array(
+        //         'label'      => __( 'Upload a carousel image', '1902Custom' ),
+        //         'section'    => '1902_carouselSection',
+        //         'settings'   => '1902_carousel2',
+        //     )
+        //     )
+        // );
+        // $wp_customize->add_setting( '1902_carousel3' , array(
+        //     'default' => '',
+        //     'transport' => 'refresh',
+        // ) );
+
+        // $wp_customize->add_control(
+        //     new WP_Customize_Image_Control( $wp_customize, '1902_carousel3Control', array(
+        //         'label'      => __( 'Upload a carousel image', '1902Custom' ),
+        //         'section'    => '1902_carouselSection',
+        //         'settings'   => '1902_carousel3',
+        //     )
+        //     )
+        // );
 
 
     }
