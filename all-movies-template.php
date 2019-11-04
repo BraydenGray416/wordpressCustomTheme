@@ -14,6 +14,7 @@ Template Post Type: page
                 <?php while (have_posts()): the_post();  ?>
                     <div class="card h-100">
                         <h2 class="card-header text-center"><?php the_title(); ?></h2>
+
                         <div class="card-body">
                             <?php the_content(); ?>
                         </div>
@@ -36,9 +37,8 @@ Template Post Type: page
                 <div class="col-12 col-sm-3">
                     <div class="card p-3">
                         <h4><?php the_title(); ?></h4>
-                        <div class="card-body">
-                            <?php the_content(); ?>
-                        </div>
+                        <p>Year Released: <?php echo get_post_meta(get_the_ID(), '1902_year', true); ?></p>
+                    
                     </div>
                 </div>
             <?php endwhile; ?>
