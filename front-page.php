@@ -19,29 +19,27 @@
     </div>
 <?php endif; ?>
 
-<?php if (have_posts()): ?>
-    <div class="container py5">
-        <div class="row justify-content-center">
-            <?php while (have_posts()): the_post(); ?>
-                <div class="col-12 mb-3">
-                    <?php get_template_part('templates/content', get_post_format()); ?>
+<?php if(get_theme_mod('1902_featuredPost')): ?>
+    <?php
+    $featuredPostQuery = new WP_Query( array( 'p' => get_theme_mod('1902_featuredPost') ) );
+    ?>
+    <?php if( $featuredPostQuery->have_posts() ): ?>
+        <?php while( $featuredPostQuery->have_posts() ): $featuredPostQuery->the_post(); ?>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <h3>Featured Post</h3>
+                    </div>
                 </div>
-
-
-
-            <?php endwhile; ?>
-        </div>
-        <?php
-        $args = array(
-    'posts_per_page' => 50,
-    'cache_results'  => false
-);
-$query = new WP_Query( $args );
-        ?>
-    </div>
+                <div class="row">
+                    <div class="col">
+                        <h2><?php the_title(); ?></h2>
+                    </div>
+                </div>
+            </div>
+        <?php endwhile; ?>
+    <?php endif; ?>
 <?php endif; ?>
-
-
 
 <?php if (have_posts()): ?>
     <div class="container py-5">

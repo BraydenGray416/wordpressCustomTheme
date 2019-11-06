@@ -166,20 +166,20 @@ $wp_customize->add_control(
 
 
         $wp_customize->add_section( '1902_slideshowSection' , array(
-       'title'      => __( 'Slideshow', '1902Custom' ),
-       'priority'   => 30,
-   ) );
-   for ($i=1; $i <=3 ; $i++) {
-       $wp_customize->add_setting( '1902_slide_'.$i , array(
-           'default'   => '',
-           'transport' => 'refresh',
-       ) );
-       $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, '1902_slide_'.$i.'Control', array(
-         'label'      => __( 'Add Slide ' . $i, '1902Custom' ),
-         'section'    => '1902_slideshowSection',
-         'settings'   => '1902_slide_'.$i,
-       ) ) );
-   }
+            'title'      => __( 'Slideshow', '1902Custom' ),
+            'priority'   => 30,
+        ) );
+        for ($i=1; $i <=3 ; $i++) {
+            $wp_customize->add_setting( '1902_slide_'.$i , array(
+                'default'   => '',
+                'transport' => 'refresh',
+            ) );
+            $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, '1902_slide_'.$i.'Control', array(
+                'label'      => __( 'Add Slide ' . $i, '1902Custom' ),
+                'section'    => '1902_slideshowSection',
+                'settings'   => '1902_slide_'.$i,
+            ) ) );
+        }
 
 
         // $wp_customize->add_setting( '1902_carousel1' , array(
@@ -223,30 +223,58 @@ $wp_customize->add_control(
         //     )
         // );
 
+        $wp_customize->add_section( '1902_featuredSection' , array(
+            'title'      => __( 'Featured Info', '1902Custom' ),
+            'priority'   => 30,
+        ) );
+        $wp_customize->add_setting( '1902_featuredPost' , array(
+            'default' => '',
+            'transport' => 'refresh',
+        ) );
 
-    }
-    add_action( 'customize_register', 'mytheme_customize_register' );
+        $allPosts = get_posts(array(
+            'numberposts' => -1
+        ));
+        // var_dump($allPosts);
+        $allChoices = array();
+        $allChoices[''] = 'Please Choose a Featured Post';
+        foreach ($allPosts as $post) {
+            $allChoices[$post->ID] = $post->post_title;
+        }
+        $wp_customize->add_control(new WP_Customize_Control($wp_customize,'featuredPostControl',
+        array(
+            'label'          => __( 'Featured Posts', '1902Custom' ),
+            'section'        => '1902_featuredSection',
+            'settings'       => '1902_featuredPost',
+            'type'           => 'select',
+            'choices'        => $allChoices
+        )
+        )
+    );
 
-    function mytheme_customize_css()
-    {
-        ?>
-        <style type="text/css">
-        body {
-            background-color: <?php echo get_theme_mod('1902_backgroundColour', '#28ede0'); ?>;
-        }
-        .header {
-            background-color: <?php echo get_theme_mod('1902_headerFooterColour', '#17b4ee'); ?>;
-        }
-        .footer {
-            background-color: <?php echo get_theme_mod('1902_headerFooterColour', '#17b4ee'); ?>;
-        }
-        .headerImageText{
-            color: <?php echo get_theme_mod('1902_headerImageTextColour', '#d8aff0') ?>;
-        }
-        .cardTitleBackgroundColor{
-            background-color: <?php echo get_theme_mod('1902_cardTitleBackgroundColor', '#40edb6') ?>
-        }
-        </style>
-        <?php
+}
+add_action( 'customize_register', 'mytheme_customize_register' );
+
+function mytheme_customize_css()
+{
+    ?>
+    <style type="text/css">
+    body {
+        background-color: <?php echo get_theme_mod('1902_backgroundColour', '#28ede0'); ?>;
     }
-    add_action( 'wp_head', 'mytheme_customize_css');
+    .header {
+        background-color: <?php echo get_theme_mod('1902_headerFooterColour', '#17b4ee'); ?>;
+    }
+    .footer {
+        background-color: <?php echo get_theme_mod('1902_headerFooterColour', '#17b4ee'); ?>;
+    }
+    .headerImageText{
+        color: <?php echo get_theme_mod('1902_headerImageTextColour', '#d8aff0') ?>;
+    }
+    .cardTitleBackgroundColor{
+        background-color: <?php echo get_theme_mod('1902_cardTitleBackgroundColor', '#40edb6') ?>
+    }
+    </style>
+    <?php
+}
+add_action( 'wp_head', 'mytheme_customize_css');
