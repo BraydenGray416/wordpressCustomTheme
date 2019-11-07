@@ -1,7 +1,5 @@
 <?php get_header(); ?>
 
-
-
     <div class="container">
         <?php if (has_nav_menu('side_navigation')): ?>
             <div class="row mt-3">

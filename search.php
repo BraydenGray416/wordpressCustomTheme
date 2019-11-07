@@ -15,6 +15,9 @@
                                 <div>
                                     <?php if (!is_singular()): ?>
                                         <?php the_excerpt(); ?>
+                                        <?php the_date(); ?>
+                                        <?php the_time(); ?>
+                                        <?php the_author(); ?>
                                         <a href="<?php the_permalink(); ?>" class="btn btn-primary">Read more</a>
                                     <?php else: ?>
                                         <?php the_post_thumbnail('full', ['class' => 'img-fluid']); ?>
