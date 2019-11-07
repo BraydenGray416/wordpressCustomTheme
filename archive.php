@@ -9,9 +9,6 @@
                         <div class="col-12 col-md-4 mb-3">
                             <?php get_template_part('templates/content', get_post_format()); ?>
                         </div>
-
-
-
                     <?php endwhile; ?>
                 </div>
                 <?php
