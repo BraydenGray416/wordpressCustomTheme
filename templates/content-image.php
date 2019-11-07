@@ -36,7 +36,7 @@ if (has_blocks()) {
 <?php endif; ?>
 
 <?php if (get_theme_mod('1902_postLayout') == 'rows'): ?>
-    
+
     <div class="card mt-2">
         <h5 class="card-header cardTitleBackgroundColor"><?php the_title(); ?></h5>
         <div class="card-body">
@@ -48,5 +48,8 @@ if (has_blocks()) {
             <a href="<?php the_permalink(); ?>" class="btn btn-info btn-block">View Image</a>
         </div>
     </div>
+
+    
+
 
 <?php endif; ?>
